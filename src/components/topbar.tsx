@@ -1,6 +1,11 @@
-const TopBar = ({ path }: { path: string }) => {
+import { useLocation } from "react-router-dom";
+
+const TopBar = () => {
+  const location = useLocation();
+  let pathname = location.pathname.substring(1,location.pathname.length);
+  const title = pathname[pathname.length - 1] === 's' ? pathname : pathname +'s';
   return (
-    <div className="text-white sticky top-0 z-40 w-full">
+    <div className="text-white sticky top-0 z-20 w-full">
       <div className="bottomShadow w-full px-5 py-3 md:px-20 flex items-center bg-gradient-to-b from-sky-500 from-0% to-blue-600 to-60%">
         <div className="text-3xl flex-1 font-bold text-shadow-sm shadow-black/50">
           DEMO Streaming
@@ -17,7 +22,7 @@ const TopBar = ({ path }: { path: string }) => {
 
       <div className="bottomShadow flex items-end px-5 py-3 md:px-20 bg-[#333333]">
         <div className="text-2xl flex-1 font-medium capitalize">
-          {`Popular ${path === "/" ? "titles" : path}`}
+          {`Popular ${location.pathname === "/" ? "titles" : title}`}
         </div>
       </div>
     </div>

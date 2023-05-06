@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TopBar from "./components/topbar";
 import Home from "./components/home-page";
@@ -17,7 +18,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <TopBar path="/"/>
+    <TopBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         {uniqTypes.map((e)=> <Route key={e} path={e} element={<ListView />} />)}

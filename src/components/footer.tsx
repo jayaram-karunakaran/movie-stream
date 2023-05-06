@@ -4,8 +4,8 @@ const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div className={`${location.pathname === "/" ? "fixed bottom-0":""} w-full bg-black/80 px-5 pt-4 md:pt-8 md:py-3 md:px-20 text-white/70 text-xs md:text-sm`} >
-      <div className="flex text-xs overflow-x-scroll pb-3">
+    <div className={`${location.pathname === "/" ? "fixed bottom-0" : ""} w-full bg-[#333333] px-5 pt-4 md:pt-8 md:py-3 md:px-20 text-white/70 text-xs md:text-sm`} >
+      <div className="flex text-xs overflow-x-scroll md:overflow-hidden pb-3">
         {[
           "Home",
           "Terms and Conditions",
@@ -14,7 +14,7 @@ const Footer = () => {
           "Help",
           "Manage Account",
         ].map((e, i) => (
-          <div key={e + "_footer_options"} onClick={()=> navigate("/")}>
+          <div key={e + "_footer_options"} onClick={() => navigate("/")}>
             <div className={`pr-3 ${i === 0 ? "" : "border-l"} pl-3 hover:bg-white/10 text-center`}> {e}</div>
           </div>
         ))}
@@ -42,7 +42,7 @@ const Footer = () => {
             className="mr-5  p-2 rounded-lg  hover:bg-white/30  cursor-pointer w-9 md:w-12"
           />
         </div>
-        <div className="flex md:flex-1 md:justify-end  overflow-x-scroll h-10 mt-2 md:mt-0 w-full">
+        <div className="flex md:flex-1 md:justify-end overflow-x-scroll md:overflow-hidden h-10 mt-2 md:mt-0 w-full">
           <img
             src="/ps.png"
             alt="playstore"

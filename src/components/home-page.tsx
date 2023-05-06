@@ -6,14 +6,14 @@ const uniqTypes:string[] = [...new Set(allDetails.entries.map((e=> e.programType
 
 function Home() {
   return (
-    <div className="pt-8 px-5 py-3 md:px-20 text-white overflow-scroll home">
+    <div className="pt-8 mb-60 px-5 py-3 md:px-20 text-white overflow-scroll">
       <div className="flex">
         {uniqTypes.map((e) => (
           <Link key={e + "_id"} to={e}>
             <div className="mr-4 mb-4 cursor-pointer">
-              <div className="uppercase relative w-36 h-52 bg-black/90 flex justify-center items-center text-2xl font-semibold">
+              <div className="uppercase relative w-36 h-52 bg-black/90 hover:bg-black flex justify-center items-center text-2xl font-semibold">
                 {e[e.length - 1] === 's' ? e : e +'s'}
-                <img
+                <img alt="bgImage"
                   src="/clapperboard.png"
                   className="p-5 absolute opacity-10"
                 />
