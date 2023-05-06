@@ -11,8 +11,6 @@ const ListView = () => {
   const [sort, setSort] = useState("ALP");
   const counter = useRef(0);
 
-  
-
   function chunk(arr: any[]): any[] {
     return arr.reduce((acc, _, i) => {
       if (i % 21 === 0) acc.push(arr.slice(i, i + 21));
@@ -26,7 +24,7 @@ const ListView = () => {
     ...(new Set(list[index].map((e: any) => Number(e.releaseYear))) as any),
   ].sort();
 
-  const [year, setYear] = useState(yearList[0]);
+  const [year, setYear] = useState(yearList[0].toString());
 
   const finalList = sort === "ALP"
     ? list[index].sort((a: any, b: any) => a.title.localeCompare(b.title))
@@ -44,7 +42,7 @@ const ListView = () => {
 
   return (
     <React.Fragment>
-      <div className="sticky top-[56px] w-full z-30 flex justify-end">
+      <div className="sticky top-16 md:top-[56px] w-full z-30 flex justify-end">
         <div className="relative mt-3 text-sm md:text-base w-32 bg-gray-400 text-center p-1 flex justify-around rounded-md mr-4 border">
           <div
             className={`cursor-pointer flex-1 p-1 ${
@@ -56,7 +54,7 @@ const ListView = () => {
           </div>
           <div
             className={`cursor-pointer flex-1 p-1 ${
-              sort.length && sort !== "ALP" ? "bg-white rounded-md" : ""
+              sort.length && sort !== "ALP" ? "bg-white rounded-sm" : ""
             }`}
             onClick={() => setSort('YEAR')}
           >
@@ -84,22 +82,22 @@ const ListView = () => {
         <div
           className={`${
             (loading) ? "hidden" : "visible"
-          } flex  flex-wrap justify-center md:justify-start`}
+          } flex  flex-wrap justify-start`}
         >
           {finalList.length ? finalList.map((e: any, i: number) => {
             let image = e.images["Poster Art"].url;
             return (
               <div
                 key={e.programType + "_id_" + i}
-                className="mr-4 mb-4 w-28 md:w-36 hover:shadow-xl hover:p-2 hover:border cursor-pointer"
+                className="mb-4 w-1/2 md:w-1/4 lg:w-1/6 xl:w-[10%] hover:shadow-xl hover:p-2 hover:border cursor-pointer"
               >
-                <img
+               <div className="pr-4"> <img
                   src={image}
                   className="w-full"
                   alt="poster"
                   onLoad={imageLoaded}
                 />
-                <div className="pt-1 whitespace-pre-wrap">{e.title}</div>
+                <div className="pt-1 whitespace-pre-wrap">{e.title}</div></div>
               </div>
             );
           }): 'No Results Found'}
